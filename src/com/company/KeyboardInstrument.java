@@ -49,7 +49,7 @@ public class KeyboardInstrument extends JFrame{
     controlPanel = new Panel();
     controlPanel.setLayout(new FlowLayout());
 
-    //Adding all keys in Keys to ArrayList
+    //Adding all keys in Keys to GUI
     for (JButton k : keys) {
       mainFrame.add(k);
     }
@@ -61,11 +61,24 @@ public class KeyboardInstrument extends JFrame{
 
     for (JButton key : keys) {
       key.addActionListener(new ActionListener() {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-          player.play(String.valueOf(key.getText()));
+
+          Runnable playNote = new Runnable() {
+            @Override
+            public void run() {
+              player.play(String.valueOf(key.getText()));
+            }
+          };
+
+          Thread playNoteThread = new Thread(playNote);
+          playNoteThread.start();
+
         }
+
       });
+
     }
 
     mainFrame.setVisible(true);
