@@ -16,15 +16,15 @@ public class KeyboardInstrument extends JFrame{
   private ArrayList<JButton> keys;
   private Player player;
 
+  public static void main(String[] args){
+    KeyboardInstrument keyboard = new KeyboardInstrument();
+    keyboard.showKeyListenerDemo();
+  }
+
   public KeyboardInstrument(){
     this.keys = new ArrayList<>();
     this.player = new Player();
     prepareGUI();
-  }
-
-  public static void main(String[] args){
-    KeyboardInstrument keyboard = new KeyboardInstrument();
-    keyboard.showKeyListenerDemo();
   }
 
   private void prepareGUI(){
@@ -37,25 +37,19 @@ public class KeyboardInstrument extends JFrame{
       }
     });
 
-    JButton cButton = new JButton("C");
-    JButton dButton = new JButton("D");
-    JButton eButton = new JButton("E");
-    JButton fButton = new JButton("F");
-    JButton gButton = new JButton("G");
-    JButton aButton = new JButton("A");
-    JButton bButton = new JButton("B");
-
-    keys.add(cButton);
-    keys.add(dButton);
-    keys.add(eButton);
-    keys.add(fButton);
-    keys.add(gButton);
-    keys.add(aButton);
-    keys.add(bButton);
+    //Adding keys to keys ArrayList
+    keys.add(new JButton("C"));
+    keys.add(new JButton("D"));
+    keys.add(new JButton("E"));
+    keys.add(new JButton("F"));
+    keys.add(new JButton("G"));
+    keys.add(new JButton("A"));
+    keys.add(new JButton("B"));
 
     controlPanel = new Panel();
     controlPanel.setLayout(new FlowLayout());
 
+    //Adding all keys in Keys to ArrayList
     for (JButton k : keys) {
       mainFrame.add(k);
     }
